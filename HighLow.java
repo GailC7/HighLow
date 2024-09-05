@@ -10,24 +10,47 @@ public class HighLow {
 
        //Variables
         int guessNumber;
-        guessNumber = random.nextInt(10)+1; 
+        int theNumber;
         //Plus one to take out the number 0
         int yourNumber;
         String messageToComputer;
+        int counter = 0;
         boolean control = false;
+        boolean guessControl= false;
 
         do{
-            System.out.println("Enter a number between 1-10 for the computer to guess...");
-            yourNumber = kb.nextInt();
+            //Random number for computer to guess
+            theNumber = random.nextInt(10)+1;
 
-            System.out.println("Is the number " + guessNumber + " ?");
-            System.out.println("Yes or No?");
-            messageToComputer = kb.toString();
+            do
+            {
+                //Random number guesser and question
+                guessNumber = random.nextInt(10)+1; 
+                System.out.println("Is the number " + guessNumber + " ?");
+                counter++;
 
-            if(guessNumber != yourNumber)
-            
+                if(guessNumber > theNumber) //Too high
+                {
+                    messageToComputer = guessNumber + " is too high. Please guess again...";
+                }
+                else if (control) //Too low
+                {
+                    messageToComputer = guessNumber + " is too low. Please guess again...";
+                }
+                else //The number guessed by the computer is correct
+                {
+                    messageToComputer = guessNumber + " is the correct number!! Yay!" + " This took " + counter +" attempts." ;
 
-        }while (control == false); 
+                    guessControl = true;
+                    control = true;
+                }
+
+                //Prints the message to the computer
+                System.out.println(messageToComputer);
+
+            }while (guessControl == false);
+
+        }while (control == false);  //End of loop
     }
     
 

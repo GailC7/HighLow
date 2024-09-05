@@ -1,0 +1,7 @@
+Requirements:
+Random number between 1-10. Whole numbers
+Takes input for user
+Print high/low for the guess
+Print correct
+Computer guesser loop
+Print the guess with the response
