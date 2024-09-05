@@ -1,7 +1,10 @@
 Requirements:
-Random number between 1-10. Whole numbers
-Takes input for user
-Print high/low for the guess
-Print correct
+A random number between 1-10. Whole numbers
+Needs delimiter/ section room 
+Takes no input from the user
+Print too high/low for the guess
+Print correct when the number guessed is correct
 Computer guesser loop
-Print the guess with the response
+Print the guess with the correlated response
+Guess counter
+
