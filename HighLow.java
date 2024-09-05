@@ -22,6 +22,8 @@ public class HighLow {
             //Random number for computer to guess
             theNumber = random.nextInt(10)+1;
             System.out.println("The number for the computer to guess is " + theNumber);
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~")
+            System.out.println(" ")
 
             do
             {
@@ -33,10 +35,14 @@ public class HighLow {
                 if(guessNumber > theNumber) //Too high
                 {
                     messageToComputer = guessNumber + " is too high. Please guess again...";
+                    System.out.println("-")
+                    System.out.println("-------------------------------")
                 }
                 else if (guessNumber < theNumber) //Too low
                 {
                     messageToComputer = guessNumber + " is too low. Please guess again...";
+                    System.out.println("-")
+                    System.out.println("-------------------------------")
                 }
                 else //The number guessed by the computer is correct
                 {
