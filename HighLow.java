@@ -16,7 +16,7 @@ public class HighLow {
         do{
             //Random number for computer to guess
             theNumber = random.nextInt(10)+1; //Plus one to take out the number 0
-            
+
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("~");
             System.out.println("The number for the computer to guess is " + theNumber);
@@ -49,7 +49,7 @@ public class HighLow {
                 }
                 else //The number guessed by the computer is correct
                 {
-                    System.out.println("====================================================================================");
+                    System.out.println("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
                     messageToComputer = guessNumber + " is the correct number!! Yay!" + " This took " + counter +" attempts." ;
 
                     guessControl = true;
@@ -83,9 +83,13 @@ public class HighLow {
                     break;
 
                 default:
-                    System.out.println("The computer took more than five tries resulting in an F for consistently fails to meet expectations is an F. Maybe consider seeing what areas you could improve on to meet some expectaions.");
+                    System.out.println("The computer took more than five tries resulting in an F for consistently fails to meet expectations is an F.");
+                    System.out.println("Maybe consider seeing what areas you could improve on to meet some expectaions.");
 
             }//End of switch
+
+            System.out.println("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
+            System.err.println(" ");
         }while (control == false);  //End of loop
     }
 }
