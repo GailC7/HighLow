@@ -6,7 +6,7 @@ public class HighLow {
         Random random = new Random();
 
        //Variables
-        int guessNumber;
+        int guessNumber = 0;
         int theNumber;
         String messageToComputer;
         int counter = 0;
@@ -14,8 +14,8 @@ public class HighLow {
         boolean guessControl= false;
 
         do{
-            //Random number for computer to guess
-            theNumber = random.nextInt(10)+1; //Plus one to take out the number 0
+            
+            theNumber = random.nextInt(10)+1; 
 
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("~");
@@ -31,7 +31,40 @@ public class HighLow {
             do
             {
                 //Random number guesser and question
-                guessNumber = random.nextInt(10)+1; 
+
+                //Guess is too small
+                if(guessNumber < theNumber) //starting off the guessNumber will always be smaller so the loop can start
+                {
+                    //sets the minimum range
+                    int min= guessNumber;
+                    int max = 10;
+
+                    int tooBig = max;
+                    int tooSmall = guessNumber;
+
+                    //sets range for random generator
+                    int range = max - min;
+
+                    //Random number for computer to guess
+                    guessNumber = random.nextInt(range) + guessNumber + 1; //Plus one to take out the number 0
+                }
+                //Guess is too big
+                else{
+                    //sets the max range
+                    int max= guessNumber;
+                    int min = 0;
+                    int tooSmall = min;
+
+
+                    int tooBig = guessNumber;
+
+                    //sets range for random generator
+                    int range = max - min;
+
+                    //guess lower number here
+                    guessNumber = random.nextInt(range) + 1 ; //Plus one to take out the number 0
+                }
+
                 System.out.println("-------------------------------");
                 System.out.println("-");
                 System.out.println("Is the number " + guessNumber + " ?");
