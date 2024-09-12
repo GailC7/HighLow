@@ -45,23 +45,22 @@ public class HighLow {
                     //sets range for random generator
                     int range = max - min;
 
-                    //Random number for computer to guess
-                    guessNumber = random.nextInt(range) + guessNumber + 1; //Plus one to take out the number 0
+                    //Next Random number for computer to guess
+                    guessNumber = random.nextInt(range) + tooSmall + 1; //Plus one to take out the number 0
                 }
                 //Guess is too big
                 else{
                     //sets the max range
                     int max= guessNumber;
                     int min = 0;
+
                     int tooSmall = min;
-
-
                     int tooBig = guessNumber;
 
                     //sets range for random generator
                     int range = max - min;
 
-                    //guess lower number here
+                    //Next guess lower number here
                     guessNumber = random.nextInt(range) + 1 ; //Plus one to take out the number 0
                 }
 
