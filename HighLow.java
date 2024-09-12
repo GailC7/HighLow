@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class HighLow {
-    public static void main(String[] args)
+    public static void main(String[] args, boolean guessToBig, boolean guessToSmall)
     {
         Random random = new Random();
 
@@ -47,9 +47,10 @@ public class HighLow {
 
                     //Next Random number for computer to guess
                     guessNumber = random.nextInt(range) + tooSmall + 1; //Plus one to take out the number 0
+                    guessToSmall = true;
                 }
                 //Guess is too big
-                else{
+                else if(guessNumber < theNumber){
                     //sets the max range
                     int max= guessNumber;
                     int min = 0;
@@ -62,7 +63,19 @@ public class HighLow {
 
                     //Next guess lower number here
                     guessNumber = random.nextInt(range) + 1 ; //Plus one to take out the number 0
+                    guessToBig = true;
                 }
+                else if(guessToBig && guessToSmall == true)
+                {
+                    tooBig = max;
+                    tooSmall = min;
+
+                    int range = max - min;
+
+                    guessNumber = random.nextInt(range) + tooSmall + 1;
+                }
+
+
 
                 System.out.println("-------------------------------");
                 System.out.println("-");
