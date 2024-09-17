@@ -1,12 +1,12 @@
 import java.util.Random;
 
 public class HighLow {
-    public static void main(String[] args, boolean guessToBig, boolean guessToSmall)
+    public static void main(String[] args)
     {
         Random random = new Random();
 
        //Variables
-        int guessNumber = 0;
+        int guessNumber;
         int theNumber;
         String messageToComputer;
         int counter = 0;
@@ -15,7 +15,9 @@ public class HighLow {
 
         do{
             
-            theNumber = random.nextInt(10)+1; 
+            
+            theNumber = random.nextInt(10) + 1; 
+            guessNumber = random.nextInt(10) + 1;
 
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("~");
@@ -32,66 +34,47 @@ public class HighLow {
             {
                 //Random number guesser and question
 
+                
                 //Guess is too small
                 if(guessNumber < theNumber) //starting off the guessNumber will always be smaller so the loop can start
                 {
-                    //sets the minimum range
-                    int min= guessNumber;
+                    messageToComputer = guessNumber + " is too low. Please guess again...";
+                    System.out.println("-");
+
+                    //sets new min range for random generator
+                    int min = guessNumber + 1;
                     int max = 10;
-
-                    int tooBig = max;
-                    int tooSmall = guessNumber;
-
-                    //sets range for random generator
                     int range = max - min;
 
                     //Next Random number for computer to guess
-                    guessNumber = random.nextInt(range) + tooSmall + 1; //Plus one to take out the number 0
-                    guessToSmall = true;
+                    guessNumber = random.nextInt(range + 1) + min; 
+                    System.out.println("The new guess number is " + guessNumber);
+
+                    System.out.println("New range is " + min + " to " + max);
+                    System.out.println("--------------------------------------------------");
                 }
+
                 //Guess is too big
-                else if(guessNumber < theNumber){
-                    //sets the max range
-                    int max= guessNumber;
-                    int min = 0;
+                else if(guessNumber > theNumber){
 
-                    int tooSmall = min;
-                    int tooBig = guessNumber;
-
+                    messageToComputer = guessNumber + " is too high. Please guess again...";
+                    System.out.println("-");
+                
                     //sets range for random generator
+                    int max = guessNumber - 1;
+                    int min = 1;
                     int range = max - min;
 
                     //Next guess lower number here
-                    guessNumber = random.nextInt(range) + 1 ; //Plus one to take out the number 0
-                    guessToBig = true;
-                }
-                else if(guessToBig && guessToSmall == true)
-                {
-                    tooBig = max;
-                    tooSmall = min;
+                    guessNumber = random.nextInt(range + 1) ; //Plus one to take out the number 0
+                    System.out.println("The new guess number is " + guessNumber);
 
-                    int range = max - min;
+                    max = guessNumber - 1;
 
-                    guessNumber = random.nextInt(range) + tooSmall + 1;
+                    System.out.println("New range is " + min + " to " + max);
+                    System.out.println("--------------------------------------------------");
                 }
 
-
-
-                System.out.println("-------------------------------");
-                System.out.println("-");
-                System.out.println("Is the number " + guessNumber + " ?");
-                counter++;
-
-                if(guessNumber > theNumber) //Too high
-                {
-                    messageToComputer = guessNumber + " is too high. Please guess again...";
-                    System.out.println("-");
-                }
-                else if (guessNumber < theNumber) //Too low
-                {
-                    messageToComputer = guessNumber + " is too low. Please guess again...";
-                    System.out.println("-");
-                }
                 else //The number guessed by the computer is correct
                 {
                     System.out.println("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
@@ -100,6 +83,11 @@ public class HighLow {
                     guessControl = true;
                     control = true;
                 }
+
+                System.out.println("-------------------------------");
+                System.out.println("-");
+                System.out.println("Is the number " + guessNumber + " ?");
+                counter++;
 
                 //Prints the message to the computer
                 System.out.println(messageToComputer);
