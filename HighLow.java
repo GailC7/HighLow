@@ -61,8 +61,22 @@ public class HighLow {
                     min = guessNumber + 1;
                     int range = max - min;
 
-                    //Next Random number for computer to guess
-                    guessNumber = random.nextInt(range)+ 1 + min ; 
+                    //The range narrower sometimes ends up with the range x-x=0. When Max and min are equal, results as a 0 in range. x would be the correct get as it narrows to the final number. This then exits the guess loop. 
+                    if(guessNumber == theNumber || range == 0) 
+                    {
+                        guessNumber = max; //As the min and max are the same number, this would be the correct number
+                        System.out.println("--------------------------------------------------");
+                        System.out.println("-");
+                        System.out.println("Is the number " + guessNumber + " ?");
+                        System.out.println("-");
+                        guessControl = true;
+                        found = true;
+                    }
+                    else
+                    {
+                        //Next Random number for computer to guess
+                        guessNumber = random.nextInt(range)+ 1 + min ; 
+                    }
 
                     System.out.println("--------------------------------------------------");
                 }
@@ -85,20 +99,19 @@ public class HighLow {
 
                 else //The number guessed by the computer is correct
                 {
-                    System.out.println("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
-                    //Prints the message to the computer
-                    System.out.println(guessNumber + " is the correct number!! Yay!" + " This took " + counter +" attempts.");
+                    System.out.println("════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
 
                     guessControl = true;
                     found = true;
                 }
-
-                System.out.println("-------------------------------");
                 
                 counter++;
 
             }while (guessControl == false); //End of guess loop
             
+            //Prints the message to the computer
+            System.out.println(guessNumber + " is the correct number!! Yay!" + " This took " + counter +" attempts.");
+
             System.err.println(" ");
             System.out.println("According to Mr. Kinser's grading criteia you recived the following... " );
                     
@@ -126,7 +139,7 @@ public class HighLow {
 
             }//End of switch
 
-            System.out.println("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
+            System.out.println("═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════");
             System.err.println(" ");
         }while (found == false);  //End of loop
     }
