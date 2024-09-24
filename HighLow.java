@@ -10,6 +10,9 @@ public class HighLow {
         boolean found = false;
         boolean guessControl= false;
 
+        int min = 1; // Starting minimum
+        int max = 10; // Starting maximum
+
         do{
      
             int theNumber = random.nextInt(10) + 1; 
@@ -36,11 +39,11 @@ public class HighLow {
 
                 // Generate a new guess until it finds a valid one
                 while (true) {
-                    guessNumber = random.nextInt(10) + 1;
+                    guessNumber = random.nextInt(max - min + 1 ) + min; //sets a range to narrow it down
 
                     // Check if the number has already been guessed
                     if (!guessedNumbers[guessNumber]) {
-                        guessedNumbers[guessNumber] = true; // Marks the number as guessed
+                        guessedNumbers[guessNumber] = true; // Marks the number as guessed and exits the loop
                         break; // Valid guess is used
                     }
                 }
@@ -55,8 +58,7 @@ public class HighLow {
                     System.out.println("-");
 
                     //sets new min range for random generator
-                    int min = guessNumber + 1;
-                    int max = 10;
+                    min = guessNumber + 1;
                     int range = max - min;
 
                     //Next Random number for computer to guess
@@ -72,8 +74,7 @@ public class HighLow {
                     System.out.println("-");
                 
                     //sets range for random generator
-                    int max = guessNumber - 1;
-                    //int min = 1;
+                    max = guessNumber - 1;
                     int range = max;
 
                     //Next guess lower number here
