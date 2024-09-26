@@ -14,9 +14,13 @@ public class HighLow {
         int max = 10; // Starting maximum
 
         do{
-     
+            
+            //Sets the number to be guessed by the computer
             int theNumber = random.nextInt(10) + 1; 
+
+            //Sets the first number guessed by the computer
             int guessNumber = random.nextInt(10) + 1;
+
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("~");
             System.out.println("The number for the computer to guess is " + theNumber);
@@ -33,15 +37,14 @@ public class HighLow {
 
             do
             {
-                //Random number guesser and question
                 System.out.println("-");
                 
 
-                // Generate a new guess until it finds a valid one
+                // Generate a new guess until it finds a valid one, an unguessed number
                 while (true) {
                     guessNumber = random.nextInt(max - min + 1 ) + min; //sets a range to narrow it down
 
-                    // Check if the number has already been guessed
+                    // Check if the number is in the "guessedNumber" array. Ig the number is in the array, it has been guessed already
                     if (!guessedNumbers[guessNumber]) {
                         guessedNumbers[guessNumber] = true; // Marks the number as guessed and exits the loop
                         break; // Valid guess is used
@@ -61,7 +64,9 @@ public class HighLow {
                     min = guessNumber + 1;
                     int range = max - min;
 
-                    //The range narrower sometimes ends up with the range x-x=0. When Max and min are equal, results as a 0 in range. x would be the correct get as it narrows to the final number. This then exits the guess loop. 
+                    //The range narrower sometimes ends up with the range x-x=0. When Max and min are equal, 
+                    //results as a 0 in range. x would be the correct get as it narrows to the final number. 
+                    //This then exits the guess loop. 
                     if(guessNumber == theNumber || range == 0) 
                     {
                         guessNumber = max; //As the min and max are the same number, this would be the correct number
@@ -115,7 +120,7 @@ public class HighLow {
             System.err.println(" ");
             System.out.println("According to Mr. Kinser's grading criteia you recived the following... " );
                     
-            //Grading switch
+            //Grading switch that uses the number of tries counted to determine an assocciated grade
             int numberOfTries = counter;
             switch(numberOfTries) {
                 case 1:
